@@ -39,6 +39,9 @@ This dataset is retreived using the author's script, producing a folder for "cle
 
 # Running
 
+## Pyhon environment
+Each experiment has its own Python 3.10 python environment, with dependencies described using the pip freeze .txt files in each experiment's folder. The details of these are largely shared, but the exact dependency state from each experiment machine has been captured to be safe.
+
 ## Build command
 (Replace face_query with the desired executable)
 ```sh
@@ -76,3 +79,4 @@ cp ./ecg_original_distribution/seed_0_labels.npy ./mini_time_series_generated_se
 ```sh
 cp ./face_original_distribution/IMDB_split_info_seed_0.json ./IMDB_split_info.json
 ```
+For the dat itself, which is referenced within this descriptor file, you will need to have downloaded the relevant piece of the IMDB-Face dataset and stored the clean faces in IMDB_clean_face.
