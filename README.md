@@ -55,10 +55,8 @@ When inside the folder, all data will need to be extracted from the archive file
 nohup time env RUST_BACKTRACE=full LD_LIBRARY_PATH=$LD_LIBRARY_PATH bash ./run_face_configs_std.sh > face_std.log.txt 2>&1 &
 ```
 
-## ECG
-
 ## LLM
-You will need to copy the dataset file
+You will need to copy the dataset file to the folder you are running the experiment from (this should be llm_experiments).
 ```sh
 cd llm_experiments
 cp llm_data_splits/llm_original_distribution/boolq_dataset_dev_seed_0.jsonl ./boolq_dataset_dev.jsonl
@@ -66,9 +64,15 @@ cp llm_data_splits/llm_original_distribution/boolq_dataset_dev_seed_0.jsonl ./bo
 cp llm_data_splits/llm_original_distribution/llm_viable_model_result_dicts_seed_0.json ./viable_model_result_dicts.json
 ```
 
+Likewise with the other datasets.
+
+## ECG
+```sh
+cp ./ecg_original_distribution/seed_0_data.npy ./mini_time_series_generated_sequences_data.npy
+cp ./ecg_original_distribution/seed_0_labels.npy ./mini_time_series_generated_sequences_labels.npy
+```
 
 ## Face
 ```sh
-nohup time env RUST_BACKTRACE=full LD_LIBRARY_PATH=$LD_LIBRARY_PATH bash ./run_face_configs_std.sh > face_std.log.txt 2>&1 &
+cp ./face_original_distribution/IMDB_split_info_seed_0.json ./IMDB_split_info.json
 ```
-
