@@ -67,8 +67,11 @@ cp llm_data_splits/llm_original_distribution/boolq_dataset_dev_seed_0.jsonl ./bo
 cp llm_data_splits/llm_original_distribution/llm_viable_model_result_dicts_seed_0.json ./viable_model_result_dicts.json
 ```
 
-Likewise with the other datasets.
+You will also need to start the chroma server.
 
+```sh
+nohup /home/ubuntu/.pyenv/versions/3.10.15/bin/chroma run --path ./gpt_chroma_db/ > chroma_log.txt 2>&1 &
+```
 ## ECG
 ```sh
 cp ./ecg_original_distribution/seed_0_data.npy ./mini_time_series_generated_sequences_data.npy
