@@ -39,3 +39,36 @@ This dataset is retreived using the author's script, producing a folder for "cle
 
 # Running
 
+## Build command
+(Replace face_query with the desired executable)
+```sh
+RUSTFLAGS="-C target-cpu=native -C target-feature=+fma,+sse,+sse2,+sse3,+sse4,+sse4,+ssse3,+aes,+avx,+avx2" cargo build --verbose --release --bin face_query
+
+export LD_LIBRARY_PATH=$(find $(pwd)/target/release/build -name "out" -exec find {} -name "lib" \; | xargs -I {} echo -n {}:)${LD_LIBRARY_PATH}
+
+mv target/release/build/face_query face_experiments/face_query
+```
+
+When inside the folder, all data will need to be extracted from the archive files (`tar -xzvf filename.tar.gz`), and the experiment will be run with a command like this (replacing the desired experiment's bash file as needed)
+
+```sh
+nohup time env RUST_BACKTRACE=full LD_LIBRARY_PATH=$LD_LIBRARY_PATH bash ./run_face_configs_std.sh > face_std.log.txt 2>&1 &
+```
+
+## ECG
+
+## LLM
+You will need to copy the dataset file
+```sh
+cd llm_experiments
+cp llm_data_splits/llm_original_distribution/boolq_dataset_dev_seed_0.jsonl ./boolq_dataset_dev.jsonl
+
+cp llm_data_splits/llm_original_distribution/llm_viable_model_result_dicts_seed_0.json ./viable_model_result_dicts.json
+```
+
+
+## Face
+```sh
+nohup time env RUST_BACKTRACE=full LD_LIBRARY_PATH=$LD_LIBRARY_PATH bash ./run_face_configs_std.sh > face_std.log.txt 2>&1 &
+```
+
