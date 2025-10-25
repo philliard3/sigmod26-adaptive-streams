@@ -20,7 +20,7 @@ for d in $(ls -d ./ecg_preclassifier_window_configs_may29_10pm/*); do
         # make a combined file name for the output
         mkdir log_outputs
         output_file_name=target_debugging_outputs/tmp_output_$d_$f.log
-        ORT_DYLIB_PATH=$ORT_DYLIB_PATH time ./time_series_query__may29_5pm tmp_time_series_config_deployment.json log_config.yml > $output_file_name 2>&1
+        ORT_DYLIB_PATH=$ORT_DYLIB_PATH time ./time_series_query tmp_time_series_config_deployment.json log_config.yml > $output_file_name 2>&1
         if [ $? -eq 0 ]; then
             rm $output_file_name
         fi
